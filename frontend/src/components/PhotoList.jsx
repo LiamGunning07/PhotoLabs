@@ -56,11 +56,11 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = (props) => {
+const PhotoList = ({ handleLike, handleUnlike }) => {
   return (
     <ul className="photo-list">
       {sampleDataForPhotoList.map(photo => (
-        <PhotoListItem key={photo.id} photo={photo} />
+        <PhotoListItem key={photo.id} photo={photo} handleLike={handleLike} handleUnlike={handleUnlike} />
       ))}
     </ul>
   );

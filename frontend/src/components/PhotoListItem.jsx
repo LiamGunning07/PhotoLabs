@@ -3,11 +3,16 @@ import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 import { useState } from "react";
 
-const PhotoListItem = (props) => {
+const PhotoListItem = ({photo, handleLike, handleUnlike}) => {
   const [ isFavourite , setIsFavourite] = useState(false)
-
+  
   const handleFavouriteClick = () => {
     console.log('Fav clicked')
+    if (!isFavourite) {
+      handleLike();
+    } else if (isFavourite) {
+      handleUnlike();
+    }
     setIsFavourite(prevState => !prevState); // Toggle the favorite status
   };
 
@@ -16,11 +21,11 @@ const PhotoListItem = (props) => {
     <div>
       <PhotoFavButton className='photo-list__fav-icon-svg' isFavourite={isFavourite} onClick={handleFavouriteClick} />
     </div>
-    <img src={props.photo.urls.regular} alt="Photo" className="photo-list__image" />
+    <img src={photo.urls.regular} alt="Photo" className="photo-list__image" />
       <div className="photo-list__user-details">
-        <img src={props.photo.user.profile} alt="Profile" className="photo-list__user-profile" />
-        <div className="photo-list__username">{props.photo.user.username}</div>
-        <p className="photo-list__user-location">{`${props.photo.location.city}, ${props.photo.location.country}`}</p>
+        <img src={photo.user.profile} alt="Profile" className="photo-list__user-profile" />
+        <div className="photo-list__username">{photo.user.username}</div>
+        <p className="photo-list__user-location">{`${photo.location.city}, ${photo.location.country}`}</p>
       </div>
   </div>
   )

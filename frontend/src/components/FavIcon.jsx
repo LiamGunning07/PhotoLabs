@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FavIcon = ({displayAlert,isFavourite}) => {
+const FavIcon = ({displayAlert, isFavourite}) => {
 
   console.log('Favorite status in FavIcon:', isFavourite);
 
