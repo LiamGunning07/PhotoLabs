@@ -4,7 +4,7 @@ import '../styles/HomeRoute.scss';
 import TopNavigationBar from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-const HomeRoute = () => {
+const HomeRoute = ({photos, topics}) => {
   const [likesCount, setLikesCount] = useState(0);
   const [isFavPhotoExist, setIsFavPhotoExist] = useState(false);
 
@@ -21,8 +21,8 @@ const HomeRoute = () => {
 
   return (
     <div className="home-route">
-      <TopNavigationBar likesCount={likesCount} isFavPhotoExist={isFavPhotoExist} />
-      <PhotoList likesCount={likesCount} isFavPhotoExist={isFavPhotoExist} handleLike={handleLike} handleUnlike={handleUnlike}/>
+      <TopNavigationBar  topics={topics}  likesCount={likesCount} isFavPhotoExist={isFavPhotoExist} />
+      <PhotoList photos={photos} likesCount={likesCount} isFavPhotoExist={isFavPhotoExist} handleLike={handleLike} handleUnlike={handleUnlike}/>
     </div>
   );
 };
