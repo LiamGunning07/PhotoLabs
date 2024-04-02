@@ -18,11 +18,11 @@ const HomeRoute = ({photos, topics}) => {
       setLikesCount(likesCount - 1);
     }
   };
-
+ 
   return (
     <div className="home-route">
-      <TopNavigationBar  topics={topics}  likesCount={likesCount} isFavPhotoExist={isFavPhotoExist} />
-      <PhotoList photos={photos} likesCount={likesCount} isFavPhotoExist={isFavPhotoExist} handleLike={handleLike} handleUnlike={handleUnlike}/>
+      <TopNavigationBar  topics={topics} likesCount={likesCount} isFavPhotoExist={isFavPhotoExist} />
+      <PhotoList photos={photos} likesCount={likesCount} isFavPhotoExist={isFavPhotoExist} handleLike={handleLike} handleUnlike={handleUnlike} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 
 const FavIcon = ({displayAlert, isFavourite}) => {
 
-  console.log('Favorite status in FavIcon:', isFavourite);
+  // console.log('Favorite status in FavIcon:', isFavourite);
 
   return (
     <svg width="20" height="17" viewBox="0 0 24 19" fill="none" xmlns="http://www.w3.org/2000/svg">
