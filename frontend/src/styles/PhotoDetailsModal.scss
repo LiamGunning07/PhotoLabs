@@ -6,10 +6,11 @@
   left: 50%;
   transform: translate(-50%, -40%);
   height: 80%;
-  width: 55%;
+  width: 65%;
   overflow-y: scroll;
   border-radius: 12px;
   z-index: 1;
+  padding-left: 2em;
 }
 
 .photo-details-modal__close-button {

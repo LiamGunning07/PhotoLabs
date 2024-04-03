@@ -3,26 +3,16 @@ import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 import { useState } from "react";
 
-const PhotoListItem = ({photo, photoId, handleLike, handleUnlike, handlePhotoClick}) => {
-  const [ isFavourite , setIsFavourite] = useState(false)
+const PhotoListItem = ({photo, toggleLike, isFavourite, handlePhotoClick}) => {
+ 
+
   
-
-  const handleFavouriteClick = () => {
-    // console.log('Fav clicked')
-    if (!isFavourite) {
-      handleLike();
-    } else if (isFavourite) {
-      handleUnlike();
-    }
-    setIsFavourite(prevState => !prevState); // Toggle the favorite status
-  };
-
   return (
-  <div className="photo-list__item">
+  <div className="photo-list__item" >
     <div>
-      <PhotoFavButton className='photo-list__fav-icon-svg' isFavourite={isFavourite} onClick={handleFavouriteClick} />
+      <PhotoFavButton className='photo-list__fav-icon-svg' isFavourite={isFavourite} onClick={() => toggleLike(photo.id)} />
     </div>
-    <img src={photo.urls.regular} alt="Photo" className="photo-list__image" onClick={handlePhotoClick}/>
+    <img src={photo.urls.regular} alt="Photo" className="photo-list__image" onClick={() => handlePhotoClick(photo)} />
       <div className="photo-list__user-details">
         <img src={photo.user.profile} alt="Profile" className="photo-list__user-profile" />
         <div className="photo-list__username">{photo.user.username}</div>
