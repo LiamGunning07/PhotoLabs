@@ -32,6 +32,8 @@
 }
 
 .photo-details-modal__image {
+  display: flex;
+  justify-content: center;
   max-width: 95%;
   border-radius: 8px;
 }

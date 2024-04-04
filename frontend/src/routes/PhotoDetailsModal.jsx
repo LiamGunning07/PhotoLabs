@@ -13,16 +13,20 @@ const PhotoDetailsModal = ({ showModal, handlePhotoClick, closeModal, toggleLike
       <button className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" onClick={closeModal} />
       </button>
-      <div className="photo-detail-modal__images" >
+      <div className="photo-details-modal__images" >
         <PhotoFavButton className='photo-list__fav-icon-svg' isFavourite={favourites && favourites.find(id => id === showModal.id)} onClick={() => toggleLike(showModal.id)} />
-        <img src={showModal.urls.regular} alt="Photo" className="photo-details-modal__image" onClick={() => handlePhotoClick(photo)} />
+        <img src={showModal.urls.full} alt="Photo" className="photo-details-modal__image" onClick={() => handlePhotoClick(photo)} />
+        <div />
         <div className="photo-details-modal__photographer-details">
           <img src={showModal.user.profile} alt="Profile" className="photo-details-modal__photographer-profile" />
           <div className="photo-details-modal__photographer-info">{showModal.user.username}
             <p className="photo-details-modal__photographer-location">{`${showModal.location.city}, ${showModal.location.country}`}</p>
           </div>
         </div>
-      <PhotoList photos={similarPhotos} favourites={favourites} toggleLike={toggleLike} handlePhotoClick={handlePhotoClick} closeModal={closeModal} />
+        <div className='photo-details-modal__header'>  Similar Photos </div>
+        <div className="photo-details-modal__images">
+        <PhotoList photos={similarPhotos} favourites={favourites} toggleLike={toggleLike} handlePhotoClick={handlePhotoClick} closeModal={closeModal} />
+        </div>
       </div>
     </div>
   )

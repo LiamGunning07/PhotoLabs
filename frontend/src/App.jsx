@@ -17,8 +17,13 @@ const App = () => {
   }
 
   const toggleLike = (id) => {
-    setFavourites((prev) => [...prev, id])
-  }
+    if (favourites.includes(id)) {
+      setFavourites((prev) => prev.filter((itemId) => itemId !== id));
+    } else {
+      setFavourites((prev) => [...prev, id]);
+    }
+  };
+  
 
   
 
