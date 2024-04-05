@@ -4,7 +4,7 @@ import HomeRoute from 'routes/HomeRoute';
 import topics from "mocks/topics";
 import photos from "mocks/photos";
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import UseApplicationData from 'components/hooks/UseApplicationData';
+import useApplicationData from 'hooks/useApplicationData';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
     handlePhotoClick,
     toggleLike,
     closeModal
-  } = UseApplicationData()
+  } = useApplicationData()
 
 
 
