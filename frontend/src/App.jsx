@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
-import topics from "mocks/topics";
-import photos from "mocks/photos";
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
@@ -14,14 +12,16 @@ const App = () => {
     showModal,
     handlePhotoClick,
     toggleLike,
-    closeModal
+    closeModal,
+    photoData,
+    topicData,
   } = useApplicationData()
 
 
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} handlePhotoClick={handlePhotoClick} closeModal={closeModal} favourites={favourites} toggleLike={toggleLike} />
+      <HomeRoute photos={photoData} topics={topicData} handlePhotoClick={handlePhotoClick} closeModal={closeModal} favourites={favourites} toggleLike={toggleLike} />
       {showModal && <PhotoDetailsModal closeModal={closeModal} showModal={showModal} handlePhotoClick={handlePhotoClick} favourites={favourites} toggleLike={toggleLike} />}
     </div>
   );
