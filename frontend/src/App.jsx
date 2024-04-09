@@ -15,13 +15,14 @@ const App = () => {
     closeModal,
     photoData,
     topicData,
+    selectTopic
   } = useApplicationData()
 
 
 
   return (
     <div className="App">
-      <HomeRoute photos={photoData} topics={topicData} handlePhotoClick={handlePhotoClick} closeModal={closeModal} favourites={favourites} toggleLike={toggleLike} />
+      <HomeRoute photos={photoData} topics={topicData} handlePhotoClick={handlePhotoClick} closeModal={closeModal} favourites={favourites} toggleLike={toggleLike} selectTopic={selectTopic} />
       {showModal && <PhotoDetailsModal closeModal={closeModal} showModal={showModal} handlePhotoClick={handlePhotoClick} favourites={favourites} toggleLike={toggleLike} />}
     </div>
   );

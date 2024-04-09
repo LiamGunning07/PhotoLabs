@@ -4,11 +4,11 @@ import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
 
-const TopicList = ({topics}) => {
+const TopicList = ({topics, selectTopic}) => {
   return (
     <div className="top-nav-bar__topic-list">
       {topics.map(({id, slug, title}) => (
-      <TopicListItem title={title} key={id} id={id} slug={slug} /> 
+      <TopicListItem title={title} key={id} topicId={id} slug={slug} selectTopic={selectTopic} /> 
       ))}
     </div>
   );

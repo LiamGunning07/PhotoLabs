@@ -1,3 +1,4 @@
+import photos from 'mocks/photos';
 import React, { useReducer, useEffect } from 'react';
 
 const initialState = {
@@ -22,9 +23,14 @@ const reducer = (state, action) => {
     case 'CLOSE_MODAL':
       return { ...state, showModal: null };
     case 'SET_PHOTO_DATA':
-      return {...state, photoData: action.payload}
-      case 'SET_TOPIC_DATA':
-      return {...state, topicData: action.payload}
+      return { ...state, photoData: action.payload }
+    case 'SET_TOPIC_DATA':
+      return { ...state, topicData: action.payload }
+    case 'GET_PHOTOS_BY_TOPICS':
+      return {...state, photoData: action.payload,};
+    case'SET_SELECTED_TOPIC':
+      return {...state, selectedTopic: action.payload,}
+
     default:
       return state;
   }
@@ -32,6 +38,10 @@ const reducer = (state, action) => {
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const selectTopic = (topicId) => {
+    dispatch({ type: 'SET_SELECTED_TOPIC', payload: topicId });
+  };
 
   useEffect(() => {
     fetch("/api/photos")
@@ -46,7 +56,7 @@ const useApplicationData = () => {
   }, []);
 
   const handlePhotoClick = (photo) => {
-    dispatch({ type: 'SET_MODAL', photo});
+    dispatch({ type: 'SET_MODAL', photo });
   };
 
   const closeModal = () => {
@@ -57,8 +67,24 @@ const useApplicationData = () => {
     dispatch({ type: 'TOGGLE_FAVOURITE', id });
   };
 
+  useEffect(() => {
+    if (state.selectedTopic) {
+      const topicId = state.selectedTopic;
+      fetch(`/api/topics/photos/${topicId}`)
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(data => {
+          dispatch({ type: 'GET_PHOTOS_BY_TOPICS', payload: data });
+        })
+        .catch(error => console.error('Error Fetching Photos by Topic:', error));
+    }
+  }, [state.selectedTopic]);
 
-  return { favourites: state.favourites, showModal: state.showModal, handlePhotoClick, toggleLike, closeModal, photoData: state.photoData, topicData: state.topicData};
+  return { favourites: state.favourites, showModal: state.showModal, handlePhotoClick, toggleLike, closeModal, selectTopic, photoData: state.photoData, topicData: state.topicData };
 };
 
 export default useApplicationData;
