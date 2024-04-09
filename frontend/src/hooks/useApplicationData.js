@@ -27,9 +27,9 @@ const reducer = (state, action) => {
     case 'SET_TOPIC_DATA':
       return { ...state, topicData: action.payload }
     case 'GET_PHOTOS_BY_TOPICS':
-      return {...state, photoData: action.payload,};
-    case'SET_SELECTED_TOPIC':
-      return {...state, selectedTopic: action.payload,}
+      return { ...state, photoData: action.payload, };
+    case 'SET_SELECTED_TOPIC':
+      return { ...state, selectedTopic: action.payload, }
 
     default:
       return state;

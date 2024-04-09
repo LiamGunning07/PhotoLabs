@@ -2,7 +2,7 @@ import React from "react";
 
 import "../styles/TopicListItem.scss";
 
-const TopicListItem = ({topicId, slug, title, selectTopic}) => {
+const TopicListItem = ({ topicId, title, selectTopic }) => {
 
   return (
     <div className="topic-list__item">
